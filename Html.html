@@ -1,20 +1,17 @@
 <html>
 <head>
+<meta charset="utf-8">
     <title>
         JS
     </title>
-    <meta charset="utf-8">
 </head>
 <body>
+    
     <script>
+        let user = { name: "John", years: 30};
+        let {name, years, isAdmin = false} = user;
 
-        let user = { name: "John", years: 30 };
-        let { name, years, isAdmin = false } = user;
-        console.log(name);
-        console.log(years);
-        console.log(isAdmin);
-
-        
+        console.log(name, years, isAdmin)
 
 
         let salaries = {
@@ -22,36 +19,18 @@
             "Pete": 300,
             "Mary": 250
         };
-
-        function topSalaries(salaries) {
-            let { John, Pete, Mary } = salaries;
-            if (Object.keys(salaries).length == 0) return null;
-            let top;
-            if (John > Pete) {
-               
-                if (John > Mary) {
-                    top = "John";
-                }
-                else {
-                    top = "Mary";
-                }
-                
-            }
-            else {
-                
-                if (Pete > Mary) {                   
-                    top = "Pete";                  
-                }
-                else {
-                    top = "Mary";
+        function topSalary(salaries) {
+            let topSalary = 0, topSalaryname;
+            if (Object.keys(salaries) == 0) return null
+            for (val in salaries) {
+                if (topSalary < salaries[val]) {
+                    topSalary = salaries[val]
+                    topSalaryname = val;
                 }
             }
-            return top;
+            return topSalaryname
         }
-
-        console.log(topSalaries(salaries));
-
-      
+        console.log( topSalary(salaries));
     </script>
 </body>
 </html>
